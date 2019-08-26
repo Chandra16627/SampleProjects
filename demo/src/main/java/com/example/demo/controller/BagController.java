@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +23,6 @@ public class BagController {
 
 	@GetMapping("/products")
 	public List<Product> getAllProducts() {
-
 		List<Product> products = bagService.getAllProducts();
 		return products;
 	}
@@ -46,5 +46,15 @@ public class BagController {
 			throw e;
 		}
 		return "Order placed successfully";
+	}
+	
+	@DeleteMapping("product")
+	public String deleteProduct(@RequestBody Product product){		
+		try{
+			bagService.deleteProduct(product);
+		}catch(Exception e){
+			throw e;
+		}
+		return "Product deleted successfully";
 	}
 }

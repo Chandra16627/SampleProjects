@@ -39,8 +39,11 @@ public class BagService {
 		return products;
 	}
 	
-	public void placeOrder(Order order){
-		
+	public void deleteProduct(Product product){
+		bagRepository.delete(BoToEntity.productBotoProductEntity(product));
+	}
+	
+	public void placeOrder(Order order){		
 		OrderEntity orderEntity = BoToEntity.orderBotoOrderEntity(order);
 		orderRepository.save(orderEntity);
 	}
