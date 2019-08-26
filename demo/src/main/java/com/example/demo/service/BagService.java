@@ -43,7 +43,11 @@ public class BagService {
 		bagRepository.delete(BoToEntity.productBotoProductEntity(product));
 	}
 	
-	public void placeOrder(Order order){		
+	public void updateProduct(Product product){
+		bagRepository.save(BoToEntity.productBotoProductEntity(product));
+	}
+	
+	public void placeOrder(Order order){
 		OrderEntity orderEntity = BoToEntity.orderBotoOrderEntity(order);
 		orderRepository.save(orderEntity);
 	}
